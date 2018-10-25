@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tehtava</title>
+</head>
+<body>
+
+<script>
+  let korko, saldo, korkoX, saldoX, korkoMaara;
+  saldo = prompt("Kuinka paljon rahaa on tilillä: ");
+  korko = prompt("Kuinka suuri on vuotuinen korkoprosentti: ");
+
+  korkoX = (korko) / 100 + 1;
+  saldoX = (saldo * korkoX).toFixed(2);
+  korkoMaara = saldoX - saldo;
+
+  alert("Summa vuoden päästä: " + saldoX + ". Koron tuotto: " + korkoMaara);
+
+</script>
+
+</body>
+</html>

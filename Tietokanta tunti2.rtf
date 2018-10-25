@@ -1,0 +1,177 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Tapa 1. tuhotaan taulu ja luodaan se uudestaan lis\'e4ttyjen sarakkeden kanssa\
+\
+DROP TABLE Konakti;\
+\
+CREATE TABLE Kontakti(\
+ etunimi CHAR(15),\
+ sukunimi CHAR(15),\
+ osoite CHAR(100)\
+);\
+\
+Tapa 2. lis\'e4t\'e4\'e4n sarakkeita olemassa olevaan tauluun\
+\
+ALTER TABLE Kontakti\
+ ADD osoite CHAR(100);\
+\
+2. Lis\'e4t\'e4\'e4n sarake, jonka avulla kukin rivi voidaan tunnistaa ainutkertaisesti\
+\
+-Ainutkertainen arvo: esiintyy kussakin sarakkeessa vain kerran\
+-Jos lis\'e4t\'e4\'e4n sarake ainutkertaisilla arvoilla, niin taulussa ei saa olla ennest\'e4\'e4n kuin enint\'e4\'e4n yksi rivi\
+\
+DROP TABLE Kontakti;\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 CREATE TABLE Kontakti(\
+ id INT UNIQUE, \
+ etunimi CHAR(15),\
+ sukunimi CHAR(20),\
+ puhelin CHAR(15)\
+);\
+\
+INSERT INTO Kontakti\
+VALUES(\
+ 1,\
+ "Maija",\
+ "Tatti",\
+ "0502216659",\
+ "Umpikuja 2"\
+),(\
+ 2,\
+ "Taavi",\
+ "Tatti",\
+ "",\
+ "Umpikuja 2"\
+);\
+\
+\
+CREATE TABLE Osoite(\
+ id INT UNIQUE NOT NULL,\
+ katu CHAR(20),\
+ pno CHAR(7),\
+ kuntaCHAR(20)\
+);\
+\
+INSERT INTO Osoite\
+VALUES(\
+ 100,\
+ "Umpikuja 1",\
+ "00100",\
+ "Helsinki"\
+);\
+\
+3. Luodaan taulujen v\'e4lille relaatio, ts. kytket\'e4\'e4n ne yhteen nimettyjen sarakkeiden arvojen avulla.\
+\
+-Poistetaan Kontakti-taulu\
+-Luodaan se uudestaan siten, ett\'e4 osoite-sarake muutetaan samatyyppiseksi INT (=sama tyyppi, kuin Osite-taulu tunnistava sarake)\
+\
+DROP TABLE Kontakti\
+\
+CREATE TABLE Kontakti(\
+ id INT UNIQUE, \
+ etunimi CHAR(15),\
+ sukunimi CHAR(20),\
+ puhelin CHAR(15),\
+ osoite INT\
+);\
+\
+-Sy\'f6tet\'e4\'e4n Kontakti-tauluun data siten, ett\'e4 osoite-sarakkeen arvo vatsaa Osoite-taulun halutun osoite-rivin tunnistetta\
+\
+INSERT INTO Kontakti\
+VALUES(\
+ 1,\
+ "Maija",\
+ "Tatti",\
+ "0502216659",\
+ 100\
+),(\
+ 2,\
+ "Taavi",\
+ "Tatti",\
+ "",\
+ 100\
+);\
+\
+4. Tehd\'e4\'e4n KYSELY jossa n\'e4ytet\'e4\'e4n Kontaktit ja heid\'e4n Osoitteensa = kytket\'e4\'e4n Kontakti- ja Osoite-taulut relaatiolla yhteen\
+\
+SELECT\
+ Kontakti.etunimi,\
+ Kontakti.sukunimi,\
+ Osoite.katu\
+FROM\
+ Kontakti,\
+ Osoite\
+\
+WHERE\
+ Kontakti.Osoite = Osoite.id;\
+\
+- Lis\'e4t\'e4\'e4n uusi rivi Osoite-tauluun\
+\
+INSERT INTO Osoite\
+VALUES(\
+ 101,\
+ "kiertotie 2",\
+ "000001",\
+ "Kittil\'e4"\
+);\
+\
+-Relaatiot tulee aina muodostaa seuraavan k\'e4siteparin mukaisesti:\
+-tunnistava sarake = AVAIN-SARAKE (KEY COLUMN)\
+-tunnistava sarake on p\'e4\'e4avain = (PRIMARY KEY; PK)\
+-viittaava sarake on viite-/vierasavain = (FOREIGN KEY; FK)\
+\
+Siis: Kytkenn\'e4t tehd\'e4\'e4n periaatteella PK-FK\
+\
+===\
+\
+Lukum\'e4\'e4r\'e4suhteet (toimii vain bin\'e4\'e4risille relaatioille = kahden taulun v\'e4lill\'e4:\
+-yhden suhde yhteen (1:1); PK (UNIQUE) - FK (UNIQUE)\
+-yhden suhde moneen (1:N); PK (UNIQUE) - FK (not UNIQUE)\
+-monen suhde yhteen (N:1); FK (not UNIQUE) - PK (UNIQUE)\
+-monen suhde moneen (N:N);k\'e4ytet\'e4\'e4n liitostaulua, jossa o viiteavainpari liitett\'e4vien taulujen perusavaimiin: PK1 - FK1 JA FK2 - PK2\
+\
+\
+===\
+\
+Esimerkki moneen suhde moneen-relaatiosta: kontaktilla voi olla useampia osoitteita \
+\
+Tarvittava liitostaulu:\
+\
+CREATE TABLE Osoite_Kontakti(\
+ Osoite INT,\
+ Kontakti INT\
+);\
+\
+INSERT INTO Osoite_Kontakti\
+VALUES(\
+ 100,\
+ 1\
+),(\
+ 101,\
+ 2\
+);\
+\
+Monen suhde moneen kysely:\
+\
+SELECT\
+  
+\f1 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Kontakti.etunimi,\
+ Kontakti.sukunimi,\
+ Osoite.katu
+\f0 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+FROM\
+ Osoite,\
+ Kontakti,\
+ Osoite_Kontakti\
+WHERE\
+ Osoite_Kontakti.osoite = Osoite.id AND\
+ Osoite_Kontakti.kontakti = Kontakti.id;\
+\
+}

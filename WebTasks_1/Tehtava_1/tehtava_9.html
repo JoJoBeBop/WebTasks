@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tehtava</title>
+</head>
+<body>
+
+<script>
+  let num1, num2, num3, summa1;
+  let NUM1, NUM2, NUM3, NUM4, summa2;
+
+  //Ekan lukon Random funktio
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
+  //Eka lukko
+  num1 = getRandomInt(9).toString();
+  num2 = getRandomInt(9).toString();
+  num3 = getRandomInt(9).toString();
+
+  //Toka lukko
+  NUM1 = Math.floor((Math.random() * 6) + 1).toString();
+  NUM2 = Math.floor((Math.random() * 6) + 1).toString();
+  NUM3 = Math.floor((Math.random() * 6) + 1).toString();
+  NUM4 = Math.floor((Math.random() * 6) + 1).toString();
+
+  summa1 = num1 + num2 + num3;
+  summa2 = NUM1 + NUM2 + NUM3 + NUM4;
+
+  alert("Ensimmäinen lukko: " + summa1 + "\nToinen lukko: " + summa2);
+
+</script>
+
+
+</body>
+</html>

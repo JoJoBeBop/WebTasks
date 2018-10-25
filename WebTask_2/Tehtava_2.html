@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tehtava 2</title>
+</head>
+<body>
+
+<script>
+    //Array
+  const tuvat = ["Tylypahka", "Rohkelikko", "Luihuinen", "Puuskupuh"];
+
+  let Tylypahka, Rohkelikko, Luihuinen, Puuskupuh;
+  let nimi = prompt("Mikä on nimesi? ");
+
+  //Random generaattori
+  var rand = tuvat[Math.floor(Math.random() * tuvat.length)];
+
+  //
+  if (rand == "Tylypahka") {
+        alert(nimi + ", olet Tylypahkalainen!");
+
+  } else if (rand == "Rohkelikko"){
+        alert(nimi + ", olet Rohkelikkolainen!");
+
+  } else if (rand == "Luihuinen"){
+        alert(nimi + ", olet Luihuinen!");
+
+  } else if (rand == "Puuskupuh") {
+        alert(nimi + ", olet Puuskupuhilainen!");
+
+  }
+
+
+</script>
+
+</body>
+</html>

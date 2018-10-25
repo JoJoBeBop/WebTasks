@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tehtava</title>
+</head>
+<body>
+
+<script>
+
+  let leivis, naula, luoti, massa;
+  let leivisX, naulaX, luotiX;
+
+  leivis = prompt("Kuinka monta leiviskää: ");
+  naula = prompt("Kuinka monta naulaa: ");
+  luoti = prompt("Kuinka monta luotia: ");
+
+  luotiX = 0.133 * luoti;
+  naulaX = 32 * 0.133 * naula;
+  leivisX = 20 * naula * luoti;
+
+  function massaX(x) {
+    return Number.parseFloat(x).toFixed(2);
+  }
+
+
+  massa = luotiX += naulaX += leivisX;
+  decimal = massa - Math.floor(massa);
+  console.log(massaX(massa));
+  alert("Massa nykyajan mitoissa: " + Math.floor(massa) + "kg ja " + massaX(decimal) + "g");
+
+</script>
+
+</body>
+</html>
