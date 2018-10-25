@@ -7,6 +7,25 @@
 <body>
 
 <script>
+    let luku, lukuX;
+
+
+  if (window.confirm("Lasketaanko neliönjuuri?")) {
+
+    luku = prompt("Anna luku: ");
+
+    if (luku <= 0) {
+      alert("Negatiivisen luvun neliöjuuri ei ole määritelty");
+
+    } else {
+      lukuX = luku * luku;
+      alert("Luvun neliönjuuri on " + lukuX);
+
+    }
+
+  } else {
+    alert("Neliönjuurta ei lasketa.")
+  }
 
 </script>
 

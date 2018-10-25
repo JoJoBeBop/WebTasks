@@ -7,6 +7,20 @@
 <body>
 
 <script>
+    let kysy, vuosi;
+
+    kysy = prompt("Anna vuosiluku: ");
+
+    vuosi = (kysy % 100 === 0) ? (kysy % 400 === 0) : (kysy % 4 === 0);
+
+
+    if (vuosi == true) {
+      alert("Kyseessä on karkausvuosi!");
+    } else {
+      alert("Ei ole karkausvuosi");
+    }
+
+
 
 </script>
 

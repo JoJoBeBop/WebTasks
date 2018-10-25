@@ -11,15 +11,35 @@
 
     sukupuoli = prompt("Oletko mies vai nainen? m/n");
 
-    hemoglobiini = prompt("Mikä on hemoglobiini arvosi? ")
+    hemoglobiini = prompt("Mikä on hemoglobiini arvosi? ");
 
-    if (sukupuoli == m) {
+    if (sukupuoli == "m") {
 
 
-    } else if (sukupuoli == n) {
+      if (hemoglobiini < 134) {
+        alert("Hemoglobiiniarvosi on alhainen. Mies");
+
+      } else if (hemoglobiini>150) {
+        alert("Hemoglobiiniarvosi on liian korkea.");
+
+      } else {
+        alert("Hemoglobiiniarvosi on normaali.");
+      }
+
+    } else if (sukupuoli == "n") {
+
+      if (hemoglobiini < 117) {
+        alert("Hemoglobiini arvosi on alhainen. Nainen");
+
+      } else if (hemoglobiini>195) {
+        alert("Hemoglobiiniarvosi on liian korkea.");
+
+      } else {
+        alert("Hemoglobiiniarvosi on normaali.");
+      }
 
     } else {
-      alert("Väärä inputti, kirjoita m tai n")
+      alert("Väärä inputti, kirjoita m tai n");
     }
 
 

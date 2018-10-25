@@ -7,6 +7,18 @@
 <body>
 
 <script>
+    let rahaMaara, bussiLippu, rahaMaaraX;
+
+    rahaMaara = +prompt("Paljonko löytyy rahaa? ");
+    bussiLippu = +prompt("Paljonko maksaa bussilippu? ");
+
+
+    if (rahaMaara >= bussiLippu) {
+      rahaMaaraX = rahaMaara - bussiLippu;
+      alert("Ostit bussilipun, lompakossa rahaa: " + rahaMaaraX);
+    } else {
+      alert("Ei tarpeeksi rahaa. Köyhä." + rahaMaara)
+    }
 
 </script>
 
