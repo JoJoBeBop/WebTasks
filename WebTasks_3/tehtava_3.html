@@ -8,6 +8,34 @@
 
 <script>
 
+    let aloitus, lopetus, vuosi;
+
+    aloitus = prompt("Anna aloitus vuosi: ");
+    lopetus = prompt("Anna lopetusvuosi: ");
+
+    for (vuosi = aloitus; vuosi < lopetus; vuosi++) {
+
+      if (vuosi % 100 ===0) {
+
+        console.log(vuosi);
+        document.write("<li>vuosi</li>");
+
+      } else if (vuosi % 400 ===0) {
+
+        console.log(vuosi);
+        document.write("<li>vuosi</li>");
+
+      } else if (vuosi % 4 ===0){
+
+        console.log(vuosi);
+        document.write("<li>" + vuosi + "</li>");
+
+      }
+    }
+
+
+
+
 </script>
 
 </body>
