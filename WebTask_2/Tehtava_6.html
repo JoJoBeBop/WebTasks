@@ -11,14 +11,27 @@
 
     kysy = prompt("Anna vuosiluku: ");
 
-    vuosi = (kysy % 100 === 0) ? (kysy % 400 === 0) : (kysy % 4 === 0);
+    if (kysy % 100 ===0) {
+      alert("On karkausvuosi")
+
+    } else if (kysy % 400 ===0) {
+      alert("On karkausvuosi");
+
+    } else if (kysy % 4 ===0){
+      alert("On karkausvuosi")
+
+    } else {
+      alert("Kyseessä ei ole karkausvuosi")
+    }
+
+    //vuosi = (kysy % 100 === 0) ? (kysy % 400 === 0) : (kysy % 4 === 0);
 
 
-    if (vuosi == true) {
+    /*if (vuosi == true) {
       alert("Kyseessä on karkausvuosi!");
     } else {
       alert("Ei ole karkausvuosi");
-    }
+    }*/
 
 
 

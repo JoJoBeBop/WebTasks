@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Tehtävä 3</title>
+</head>
+<body>
+
+<script>
+    let luku, sqr;
+    luku = prompt("Anna luku, niin anna sen neliöjuuren: ");
+
+    while (luku <= 0) {
+      luku = prompt("Luvun täytyy olla positiivinne. Anna luku: ");
+
+    }
+
+    sqr = Math.sqrt(luku).toFixed(2);
+    alert("Luvun " + luku + " neliöjuuri on " + sqr);
+
+</script>
+
+</body>
+</html>

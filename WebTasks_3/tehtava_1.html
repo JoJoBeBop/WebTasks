@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Tehtävä 3</title>
+</head>
+<body>
+
+    <script>
+        let numero;
+        let kertoma = 1;
+
+        numero = prompt("Anna luku:");
+
+        for (i = 0; i < numero; i++) {
+          kertoma = kertoma * (numero - i);
+        }
+
+        // 5 * (5 - 1...2...3...4) = 120
+        // 1 * (1-0) = 1
+
+        alert("Luvun " + numero + " kertoma on " + kertoma)
+
+    </script>
+
+</body>
+</html>
