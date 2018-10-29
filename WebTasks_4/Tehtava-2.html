@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Tehtävät 4</title>
+</head>
+<body>
+
+<script>
+    let i, nimet, lista;
+    let numerot = [];
+
+
+    nimet = prompt("Kuinka monta mimeä lisätään?");
+
+    for (i = 0; i < nimet; i++) {
+
+      numerot[i] = prompt("Anna nimi: ");
+
+      lista = "<li>" + (i+1) + ". " + numerot[i].toString() + "</li>";
+      document.write(lista);
+
+    }
+
+</script>
+
+</body>
+</html>
