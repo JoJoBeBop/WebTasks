@@ -2,13 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>JS Tehtävä 3</title>
+    <title>JS Tehtävät 3</title>
 </head>
 <body>
 
-    <script>
+<script>
 
-    </script>
+  let luku, tulos, silmaluku, i, j, yhtasuuri, decimal;
+  let chans = 0;
+  let summa = 0;
+
+  luku = prompt('Noppien lukumäärä: ');
+  silmaluku = prompt("Silmälukujen summa : ");
+
+
+  for (j = 0; j <= 10000; j++) {
+
+    for (i = 0; i<=luku ; i++) {
+
+      tulos = Math.floor(Math.random()*6)+1;
+      summa += tulos;
+    }
+
+    if (summa == silmaluku) {
+      chans++;
+    }
+
+    console.log(summa);
+    //Nollaa summan, muuten: 14, 25, 36...
+    summa = 0;
+  }
+
+  //Laskee kuinka monta kertaa silmaluku on esiintynyt jaettuna 10 000
+  yhtasuuri = (chans / 10000).toFixed(3);
+
+  //Muuttaa prosenteiksi
+  decimal = yhtasuuri * 100;
+
+  alert(decimal + "% mahdollisuus" + ". Luku: " + silmaluku + " esiintyi " + chans + " Kertaa / 10 000");
+
+</script>
 
 </body>
 </html>
