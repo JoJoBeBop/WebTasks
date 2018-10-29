@@ -2,14 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>JS Tehtävä 3</title>
+    <title>JS Tehtävät 3</title>
 </head>
 <body>
 
-    <script>
-      document.write("Hello World!");
+<script>
 
-    </script>
+  let luku, i;
+  luku = prompt("Anna luku, niin keron onko se alkuluku: ");
+
+  for (i = 2; i < luku ; i++) {
+    console.log(i);
+
+    if (luku % i === 0) {
+      alert(luku + "Ei ole alkuluku!")
+    }
+
+  }
+
+  alert(luku + " On alkuluku")
+
+</script>
 
 </body>
 </html>
+
+

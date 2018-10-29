@@ -2,11 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>JS Tehtävä 3</title>
+    <title>JS Tehtävät 3</title>
 </head>
 <body>
 
 <script>
+
+  let luku, tulos, i;
+  let summa = 0;
+
+  luku = prompt('Noppien lukumäärä: ');
+
+  for (i = 0; i<=luku ; i++) {
+
+    tulos = Math.floor(Math.random()*6)+1;
+    summa += tulos;
+  }
+
+  alert("Noppien summa: " + summa);
 
 </script>
 
