@@ -8,6 +8,30 @@
 
 <script>
 
+  let i, j;
+  let luvut = [];
+
+  //Luo listan
+  for (i = 0;; i++) {
+    luvut.push(prompt("Anna luku: "));
+    console.log(luvut.toString());
+
+    if (luvut[i] === "0") {
+      break
+    }
+  }
+
+  //Printtaa isoimmasta pienimpään
+  luvut.sort(function(a, b) {
+    return b - a;
+  });
+
+  alert(luvut);
+
+
+
+
+
 </script>
 
 </body>

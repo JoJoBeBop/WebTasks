@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Tehtävät 4</title>
+</head>
+<body>
+
+<script>
+    let i;
+    let luku = [];
+
+    for (i = 0; i<3; i++){
+      luku[i] = prompt("ANNA: ");
+    }
+
+
+    console.log(luku)
+
+  let values = [2, 56, 3, 41, 0, 4, 100, 23];
+  let sum = luku.reduce((previous, current) => current += previous);
+  let avg = sum / luku.length;
+  alert(sum);
+
+</script>
+
+</body>
+</html>

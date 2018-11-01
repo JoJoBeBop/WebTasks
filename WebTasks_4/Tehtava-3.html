@@ -7,6 +7,25 @@
 <body>
 
 <script>
+  let lista, i;
+  const kerrat = 6;
+  let luvut = [];
+
+
+  //Koirien nimet
+  for (i = 1; i <= kerrat; i++) {
+    luvut[i] = prompt("Anna koiran nimi: ");
+
+  }
+
+  //Aakkosjärjestykseen
+  luvut.sort();
+
+  //Printtaus väärässä järjestyksessä
+  for (i = kerrat - 1; i >= 0; i--) {
+    lista = "<li>" + luvut[i].toString() + "</li>";
+    document.write(lista);
+  }
 
 </script>
 

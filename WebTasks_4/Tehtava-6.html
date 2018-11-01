@@ -8,6 +8,85 @@
 
 <script>
 
+  let i, j;
+  let luvut = [];
+
+  //Luo listan
+  for (i = 0;; i++) {
+    luvut.push(prompt("Anna luku: "));
+    console.log(luvut.toString());
+
+    if (luvut[i] === "0") {
+      break
+    }
+  }
+
+  luvut.pop();
+
+  //laskee listan yhteen
+
+  let sum = +luvut.reduce((previous, current) => current += previous);
+  let avg = sum / luvut.length;
+
+  //let numerot = luvut.reduce(getSum) / luvut.length;
+
+
+  alert(sum);
+
+
+
+
+
+
+
+  /*
+  function getSum(total, num) {
+    return total + num;
+  }
+
+  let numerot = luvut.reduce(getSum);
+
+  //let numerot = luvut.reduce(getSum) / luvut.length;
+
+
+  alert(numerot)
+  console.log(numerot+ " KK" + luvut.length)
+
+
+
+  */
+
+
+
+
+
+
+
+/*
+
+  let sum = luvut.reduce((previous, current) => current += previous);
+  let avg = sum / luvut.length;
+  alert(avg);
+
+*/
+
+
+/*
+  let half = Math.floor(luvut.length / 2);
+
+  if (luvut.length % 2) {
+    console.log(luvut[half] + "11")
+  }
+  else {
+    console.log(luvut[half - 1] + luvut[half] + " .22")
+  }
+
+  alert(half);*/
+
+
+
+
+
 </script>
 
 </body>

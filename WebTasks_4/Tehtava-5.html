@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <title>JS Tehtävät 4</title>
 </head>
 <body>
 
 <script>
+
+  let i, j;
+  let luvut = [];
+
+  //Luo listan
+  for (i = 0;; i++) {
+
+    const luku = prompt("Anna luku 1 - 1000 välillä: ")
+
+    if (luvut.includes(luku)) {
+      alert("Luku on jo annettu");
+      break
+
+    } else if (luvut[i] > 1000) {
+      alert("Liian suuri luku");
+      break
+
+    }
+    luvut.push(luku);
+    console.log(luvut.toString());
+  }
+
+
+
+
 
 </script>
 
