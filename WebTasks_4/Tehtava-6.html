@@ -21,7 +21,46 @@
     }
   }
 
+
   luvut.pop();
+
+
+  luvut.sort(function(a, b) {
+    return b - a;
+  });
+
+
+
+
+
+  const mediaani = +Math.floor((luvut.length) / 2);
+
+  console.log("PAskaa " + luvut[mediaani])
+
+
+  if (luvut.length % 2 === 0){
+    console.log("AJOTAIN");
+    alert(((luvut[mediaani] + 1) + luvut[mediaani]));
+
+  } else {
+
+    console.log(luvut[mediaani]);
+
+    alert(luvut[mediaani]);
+  }
+
+
+
+
+
+
+
+/*
+
+  console.log("Mediaanin arvo " + mediaani);
+  console.log("Lsitan mediaani aro luku " + luvut[mediaani]);
+
+
 
   //laskee listan yhteen
 
@@ -33,6 +72,7 @@
 
   alert(sum);
 
+*/
 
 
 
