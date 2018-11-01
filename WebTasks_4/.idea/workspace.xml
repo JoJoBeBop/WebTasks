@@ -44,8 +44,8 @@
       <file leaf-file-name="paskaaa.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/paskaaa.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" column="25" lean-forward="false" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+            <state relative-caret-position="285">
+              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -191,12 +191,12 @@
       <option name="presentableId" value="Default" />
       <updated>1540808423925</updated>
       <workItem from="1540808425133" duration="2488000" />
-      <workItem from="1541056636124" duration="17705000" />
+      <workItem from="1541056636124" duration="18705000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20193000" />
+    <option name="totallyTimeSpent" value="21193000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2560" y="23" width="1200" height="1897" extended-state="0" />
@@ -315,8 +315,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/paskaaa.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="25" lean-forward="false" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+        <state relative-caret-position="285">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
       </provider>

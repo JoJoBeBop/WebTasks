@@ -9,36 +9,39 @@
 <script>
   let luku;
   let lista = [];
-  let a, b;
+
 
   do{
-    luku =  prompt('anna luku');
+    luku =  prompt('Anna luku: ');
     if(luku != 0) {
       lista.push(luku);
     }
-  }while(luku!=0);
+  }while(luku != 0);
 
 
 
   lista.sort(function(a, b){return a-b});
 
+  let half = Math.floor(lista.length/2);
+
 
   console.log("Lista : " + lista);
   console.log("Pituus: " + lista.length);
 
-  if(lista.length %2 != 0){
-    a = + Math.floor((lista.length)/2);
-    alert('Mediaani = ' + lista[a]);
+  if(lista.length % 2 != 0){
+
+    alert('Mediaani = ' + lista[half]);
   }
 
   else{
 
-    console.log("Toimi: ")
+    let joo = Math.floor(((lista.length) + 1) + (lista.length) / 2);
 
-    a =Math.floor((lista.length)/2);
-    b =Math.floor((lista.length)/2 + 1);
-    document.write((a + b) / 2);
-    document.write( 'pariton' );
+    console.log(lista[joo]);
+
+    alert((lista[half-1] + lista[half]) / 2.0);
+
+
   }
 </script>
 
