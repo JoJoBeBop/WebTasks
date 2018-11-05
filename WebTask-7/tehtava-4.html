@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FUNKTIO TEHTÄVÄT</title>
+</head>
+<body>
+
+<script>
+    function suuruus(eka, toka, kolmas){
+      return Math.max(eka, toka, kolmas);
+    }
+
+    let kysy1, kysy2, kysy3, tulos, i;
+
+    kysy1 = prompt("Anna 1. luku: ");
+    kysy2 = prompt("Anna 2. luku: ");
+    kysy3 = prompt("Anna 3. luku: ");
+
+    tulos = suuruus(kysy1, kysy2, kysy3);
+    alert("Suurin " + tulos);
+
+
+    // Voisi tehdä for loop ja:
+
+   /* for (i=0; i <=3; i++) {
+      annettu[i] = prompt("anna luku: ")
+    }
+*/
+    //return Math.max.apply(Math, eka, toka, kolmas);
+
+    //Jos haluaisi tehdä Arrayn kanssa. Olen laiska
+
+</script>
+
+</body>
+</html>

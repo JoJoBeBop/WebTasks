@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FUNKTIO TEHTÄVÄT</title>
+</head>
+<body>
+
+<script>
+    function muunnos(gal) {
+      let tulos = gal / (3.785);
+      return tulos;
+    }
+
+    let litra, lg;
+    litra = prompt("Anna gallonat. ");
+    lg =muunnos(litra);
+
+    alert(litra + " gallonaa on litroina: " + lg.toFixed(3));
+</script>
+
+</body>
+</html>

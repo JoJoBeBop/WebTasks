@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FUNKTIO TEHTÄVÄT</title>
+</head>
+<body>
+
+<script>
+
+  function muunnos(lit) {
+    let tulos = lit * (3.785);
+    return tulos;
+  }
+
+  let lit, lg;
+  lit = prompt("Anna litrat: ");
+  lg = muunnos(lit);
+
+  alert(lg.toFixed(3) +  " Nestegallonaa on "+ lit + " litraa");
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FUNKTIO TEHTÄVÄT</title>
+</head>
+<body>
+
+<script>
+
+    function itseisarvo(it) {
+
+      if (it < 0){
+        let tulos = it * (-1);
+        return tulos;
+
+      } else {
+        let tulos = it;
+        return tulos;
+      }
+
+
+    }
+
+    let kysy, vast;
+    kysy = prompt("Anna luku niin annan sen itseisarvon.");
+    vast = itseisarvo(kysy);
+    alert(kysy + " itseisarvo on " + vast);
+
+
+</body>
+</html>
