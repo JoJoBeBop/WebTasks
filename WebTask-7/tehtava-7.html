@@ -2,9 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>FUNKTIO TEHTÄVÄT</title>
+    <title>Damn straight</title>
 </head>
 <body>
+
+<script>
+
+  const luvut = [0, 1, 5, 6, 9, 10];
+  const parilliset = [];
+  let i;
+
+  let parit = function (luvut) {
+    for (i = 0; i<=luvut.length; i++) {
+
+      if ((luvut[i] % 2) !==1){
+        parilliset.push(luvut[i]);
+        console.log(parilliset);
+      }
+
+    }
+  };
+
+  parit(luvut);
+  alert(parilliset);
+
+
+</script>
 
 </body>
 </html>
