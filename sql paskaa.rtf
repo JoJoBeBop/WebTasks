@@ -1,0 +1,130 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue233;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c93333;\cssrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Teht 1\
+Hae ty\'f6ntekij\'e4t osastottain\
+\
+*V1.*\
+\
+SELECT\
+ d.dname Osasto,\
+ e.lname Ty\'f6ntekij\'e4\
+\
+FROM\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0  employee e,\
+ department d\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+WHERE\
+ e.deptno = d.dno;\
+\
+*V2.*\
+\
+SELECT\
+ d.dname Osasto,\
+ e.lname Ty\'f6ntekij\'e4\
+\
+FROM\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0  employee e INNER JOIN\
+  department d ON e.deptno = d.dno;\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+- Siistit\'e4\'e4n kysely lajitteluilla ensin osaston nimen ja toiseksi sukunimen mukaan:\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 SELECT\
+ d.dname Osasto,\
+ e.lname Ty\'f6ntekij\'e4\
+\
+FROM\
+ employee e INNER JOIN\
+  department d ON e.deptno = d.dno;\
+\
+ORDER BY\
+ d.dname,\
+ e.lname;\
+\
+TEHT\'c4V\'c4 2. Laske ty\'f6ntekij\'f6iden lukum\'e4\'e4r\'e4 osastottain(HUOM. GROUP BY:n k\'e4ytt\'f6 koskien kootnifunktion ulkopulelle j\'e4\'e4vie\'e4 sarakkeita)\
+\
+\
+SELECT\
+ d.dname Osasto,\
+ COUNT(e.ssn) 'Ty\'f6ntekij\'f6iden lkm'\
+\
+FROM\
+ employee e INNER JOIN\
+  department d ON e.deptno = d.dno\
+\
+GROUP BY\
+ d.dname\
+ \
+ORDER BY\
+ d.dname DESC;\
+\
+\
+VALITSE KAIKKI OSASTOT JA NIIDEN PROJEKTIT\
+\
+SELECT\
+ d.dname,\
+ p.pname\
+FROM\
+ department d,\
+ project p\
+WHERE\
+ d.dpno = p.deptno;\
+\
+VALITSE PURCHASE DEPT\
+\
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://users.metropolia.fi/phpMyAdmin/url.php?url=https://dev.mysql.com/doc/refman/5.5/en/select.html"}}{\fldrslt 
+\f1 \cf2 \expnd0\expndtw0\kerning0
+\ul \ulc2 \outl0\strokewidth0 \strokec2 SELECT}}
+\f1 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3  d.dname FROM department d WHERE d.dno = '10' \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\
+N\'c4YT\'c4 TUNNIT SOASTOLTA\
+\
+SELECT\
+ w.hours\
+\
+FROM\
+ works_on w\
+\
+WHERE\
+ w.ProjNo = '100';\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+SELECT\
+ p.pname,\
+ p.DeptNo,\
+ d.dname\
+\
+FROM\
+ project p,\
+ department d\
+WHERE\
+ p.DeptNo = d.dno,\
+ p.location = '2'\
+ \
+ORDER BY\
+ d.DNo;\
+}

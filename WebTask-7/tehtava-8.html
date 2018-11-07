@@ -2,9 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>FUNKTIO TEHTÄVÄT</title>
+    <title>Damn straight</title>
 </head>
 <body>
+
+<script>
+
+  function fibo(luku) {
+    if (luku<=1)
+      return 1;
+
+    else
+      return fibo(luku-1) + fibo(luku-2);
+  }
+
+  console.log(fibo(5));
+
+  let kysy;
+  kysy = prompt("Anna monennesko fibo: ");
+  let vast = fibo(kysy);
+  alert(vast);
+
+
+
+</script>
 
 </body>
 </html>
