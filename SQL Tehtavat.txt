@@ -134,7 +134,7 @@ ORDER BY
 
 8. Valitse kaikki Tampereella olevat projektit ja lajittele ne ohjaavan osaston mukaan
 
-SELECT
+SELECT DISTINCT
  p.pname,
  d.dname
 
@@ -143,27 +143,47 @@ FROM
  department d
 
 WHERE
- p.location = '2'
- 
-ORDER BY
- p.deptno;
+ p.location = '2' AND d.dno = p.deptno;
 
 
 ===
 
 9. Laske yhteenlasketut tunnit projekteittain
 
-SELECT SUM
- w.hours
+//Toimii:
+SELECT
+ projno,
+SUM(hours)
+FROM
+ works_on
+GROUP BY
+ projno;
+
+=====
+
+SELECT
+ works_on,
+ projno,
+SUM(hours)
+FROM
+ works_on,
+ project
+GROUP BY
+ projno = pno;
+ 
+
+--
+
+SELECT 
+ w.hours,
+ p.pname
 
 FROM
- w.works_on
-
+ works_on w,
+ project p
 WHERE
- w.proj_no = '100';
+ w.projno = p.pno;
 
-
-===
 
 10. Laske yksikköhinta: työtunnit / projekti osastoittain
     

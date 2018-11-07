@@ -1,0 +1,106 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Temporaalitiedonhallinta\
+\
+1. Voimassaoloaika: valid time =>  Valid start time (VST) jaValid End Time (VET)\
+\
+Esim.\
+\
+CREATE TABLE VT_Kontakti (\
+ id INT,\
+ etunimi CHAR(15),\
+ sukunimi char(20)
+\b ,
+\b0 \
+ puhelin char(20)
+\b ,
+\b0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0  osoite char(100)
+\b ,\
+
+\b0  vst date
+\b ,
+\b0 \
+ vet date,\
+ primary key (id, vst)\
+);\
+\
+INSERT INTO VT_Kontakti (id, etunimi, sukunimi, puhelin, osoite, vst, vet)\
+VALUES (1, "Matti", "Tattila", 0506588495, "Kukkulam\'e4ki 2", '2018-11-08', '2018-11-09');\
+\
+\
+//Koska v\'e4\'e4r\'e4\
+UPDATE VT_Kontakti\
+SET osoite=('Kiertotie 2')\
+WHERE id = 1 AND vst='2018-11-11';\
+\
+\
+\
+\
+//Ei toimi\
+INSERT INTO VT_Kontakti\
+VALUES(\
+    1,\
+    "MATTI",\
+    "TATTI",\
+    0502566585,\
+    "KUKKULAM\'c4KI 2",\
+    '2018-11-08'\
+);\
+\
+===\
+\
+-- Tiedon p\'e4ivittt\'e4minen. Kaksiaihenen. prosessi, jossa ensin luodaan tietue uusilla arvoilla ha voimassaoloajalla ja toiseksi p\'e4ivitet\'e4\'e4n vanhan tiedon p\'e4\'e4ttymisaika\
+\
+INSERT INTO VT_Kontakti (id, etunimi, sukunimi, puhelin, osoite, vst)\
+VALUES (1, "Matti", "Tattila", 0506588495, "Kiertotie 2", '2018-11-10', NULL);\
+\
+UPDATE VT_Kontakti\
+SET VET = '2018-11-10' \
+WHERE id = 1 AND vst = '2018-11-08';\
+\
+===\
+\
+Temporaalikysely 1. Mitk\'e4 tiedot ovat voimassa 09.11.2018?\
+\
+SELECT\
+ *\
+FROM\
+ VT_Kontakti\
+WHERE\
+ vst <='2018-11-09' AND\
+ (vet >= '2018-11-09' OR ISNULL(vet));\
+\
+//jos ei NULL niin palauttaa vaan yhden\
+\
+INSERT INTO VT_Kontakti (id, etunimi, sukunimi, puhelin, osoite, vst, vet)\
+VALUES (2, "Maija", "Tattila", 050245594, "Huopalahtikuja 2", '2018-11-01', NULL);\
+\
+\
+===\
+\
+Rivill\'e4 olevan tideon poistaminen: EI k\'e4ytet\'e4 DELETE komentoa, vaan annetaan nimenomaan\
+\
+\
+INSERT INTO VT_Kontakti (id, etunimi, sukunimi, puhelin, osoite, vst, vet)\
+VALUES (2, "Urho", "Tattila", 0502466578, "Kukkulam\'e4ki 2", '1991-11-01', NULL);\
+\
+\
+\
+Temporaalikysely 2. Ketk\'e4 ja kuinka kauanko ovat asuneet kukkulanm\'e4ell\'e4?\
+\
+SELECT\
+ *\
+FROM\
+ VT_Kontakti\
+WHERE\
+ osoite="Kukkulam\'e4ki 2";\
+\
+\
+}
