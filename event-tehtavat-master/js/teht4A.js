@@ -27,7 +27,6 @@ for (let j = 0; j < pics.length; j++) {
     document.querySelector('#kuvaPaikka').innerHTML = '<img src="' + pics[j].big + '">';
     //CSS
     document.querySelector('#kuvaPaikka').style = "display: block;";
-    //document.querySelector('#kuvaPaikka').setAttribute('class', 'hidden');
 
   });
 

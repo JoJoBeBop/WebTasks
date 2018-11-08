@@ -41,6 +41,7 @@ function print3() {
 
 }
 
+
 //CSS Piilotus
 document.querySelector('#kuvaPaikka').addEventListener("click", piilota);
 
