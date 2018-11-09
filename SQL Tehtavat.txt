@@ -242,6 +242,70 @@ ORDER BY
 
 12. Laske kaksosten tekemät työtunnit projekteittain
 
+//Lisätään kaksonen (vain) employee taulukkoon
+INSERT INTO employee(Ssn, Bdate, FName, Minit, LName, Sex, Salary, Address, DeptNo, Supervisor)
+VALUES (86349996-757, "1980-01-01", "Lewis", "K", "Simpson", "m", 23000.00, "Fluteroad 32", 10, 4661051-830);
+
+SELECT DISTINCT
+ w.hours,
+ e.LName
+FROM
+ employee e,
+ works_on w
+WHERE
+ e.LName LIKE "Simpson";
+
+
+---
+//Antaa Simpsonin työtunnit projkteittain
+SELECT DISTINCT
+ w.hours,
+ e.LName,
+ p.PName,
+SUM(hours)
+FROM
+ employee e,
+ works_on w,
+ project p
+WHERE
+ e.LName LIKE "Simpson" AND p.PNo = w.ProjNo AND w.Employee = e.Ssn
+GROUP BY
+ w.Hours;
+
+ 
+----
+
+SELECT
+ works_on.Hours,
+ employee.LName
+FROM
+ employee,
+ works_on
+INNER JOIN
+ project ON project.PNo = works_on.ProjNo
+WHERE
+ employee.LName LIKE "Simpson" OR employee.LName = "Levin" AND works_on.Employee = employee.Ssn
+ORDER BY
+ employee.LName;
+
+---
+
+//Turhaa
+SELECT
+ works_on.Hours,
+ employee.LName
+FROM
+ employee,
+ works_on
+INNER JOIN
+ project ON project.PNo = works_on.ProjNo
+INNER JOIN
+ works_on ON works_on.Employee = employee.Ssn
+WHERE
+ employee.LName LIKE "Simpson" OR employee.LName = "Levin"
+ORDER BY
+ employee.LName;
+
 ===
 
 13. Valitse vanhin esimies 

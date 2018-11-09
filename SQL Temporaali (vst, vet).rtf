@@ -20,8 +20,7 @@ CREATE TABLE VT_Kontakti (\
  puhelin char(20)
 \b ,
 \b0 \
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
-\cf0  osoite char(100)
+ osoite char(100)
 \b ,\
 
 \b0  vst date
@@ -34,6 +33,8 @@ CREATE TABLE VT_Kontakti (\
 INSERT INTO VT_Kontakti (id, etunimi, sukunimi, puhelin, osoite, vst, vet)\
 VALUES (1, "Matti", "Tattila", 0506588495, "Kukkulam\'e4ki 2", '2018-11-08', '2018-11-09');\
 \
+INSERT INTO employee(Ssn, Bdate, FName, Minit, LName, Sex, Salary, Address, DeptNo, Supervisor)\
+VALUES (86349996-757, "1980-01-01", "Lewis", "K", "Simpson", "m", 23000.00, "Fluteroad 32", 10, 4661051-830)\
 \
 //Koska v\'e4\'e4r\'e4\
 UPDATE VT_Kontakti\

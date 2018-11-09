@@ -1,0 +1,211 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 1.\
+\
+SELECT * FROM department d;\
+\
+2.\
+\
+SELECT\
+ e.lname,\
+ e.fname \
+FROM \
+ employee e;\
+\
+3.\
+\
+SELECT\
+ d.dname Osasto,\
+ e.lname Ty\'f6ntekij\'e4,\
+ e.fname\
+\
+FROM\
+ employee e,\
+ department d\
+\
+WHERE\
+ e.deptno = d.dno;\
+\
+4.\
+\
+SELECT\
+ d.dname,\
+ e.fname,\
+ e.lname\
+\
+FROM\
+ employee e,\
+ department d\
+\
+WHERE\
+ e.ssn = d.manager;\
+\
+5.\
+\
+SELECT\
+ d.dname Osasto,\
+ COUNT(e.ssn) 'Ty\'f6ntekij\'f6iden lkm'\
+\
+FROM\
+ employee e INNER JOIN\
+  department d ON e.deptno = d.dno\
+\
+6. Valitse kaikki projektit, jotka ohjataan Hankinta (Purchase)-osastolla\
+\
+SELECT\
+ d.dname,\
+ p.pname\
+FROM\
+ department d,\
+ project p\
+WHERE\
+ d.dno = '10' AND d.dno =  p.deptno;\
+\
+7. Valitse kaikki esimiehet (supervisor) osastoittain (???)\
+\
+SELECT\
+ d.dname,\
+ e.fname,\
+ e.lname\
+\
+FROM\
+ employee e,\
+ department d\
+\
+WHERE\
+ e.ssn = d.manager\
+ \
+ORDER BY\
+ d.dname;\
+\
+8. Valitse kaikki Tampereella olevat projektit ja lajittele ne ohjaavan osaston mukaan\
+\
+SELECT DISTINCT\
+ p.pname,\
+ d.dname\
+\
+FROM\
+ project p,\
+ department d\
+\
+WHERE\
+ p.location = '2' AND d.dno = p.deptno;\
+\
+9. Laske yhteenlasketut tunnit projekteittain\
+\
+SELECT\
+ pname,\
+SUM(hours)\
+FROM\
+ works_on w,\
+ project p\
+WHERE\
+ p.pno = w.ProjNo\
+GROUP BY\
+ projno;\
+\
+10. Laske yksikk\'f6hinta: ty\'f6tunnit / projekti osastoittain\
+\
+//osasto, projnimi, tunnit sum:\
+SELECT\
+ d.dname,\
+ p.pname,\
+SUM(hours)\
+FROM\
+ works_on w,\
+ project p,\
+ department d\
+WHERE\
+ p.pno = w.ProjNo AND p.DeptNo = d.DNo\
+GROUP BY\
+ projno;\
+\
+11. Valitse ty\'f6ntekij\'f6t osastoittain ja esit\'e4 ne  ik\'e4j\'e4rjestyksess\'e4\
+\
+//Antaa ik\'e4j\'e4rjestyksess\'e4 ja n\'e4ytt\'e4\'e4 miss\'e4 osastossa on\
+SELECT\
+ e.FName,\
+ e.lname,\
+ d.dname\
+FROM\
+ employee e,\
+ department d\
+WHERE\
+ e.DeptNo = d.DNo\
+GROUP BY\
+ bdate DESC;\
+\
+12. Laske kaksosten tekem\'e4t ty\'f6tunnit projekteittain\
+\
+// Tietokannassa ei ole kaksosia, joten etsin vaan ihmisetn keill\'e4 on nimi Simpson ja tulostan, miss\'e4 n\'e4kyy tunnit projekteittain ja summaan tunnit.\
+\
+SELECT DISTINCT\
+ w.hours,\
+ e.LName,\
+ p.PName,\
+SUM(hours)\
+FROM\
+ employee e,\
+ works_on w,\
+ project p\
+WHERE\
+ e.LName LIKE "Simpson" AND p.PNo = w.ProjNo AND w.Employee = e.Ssn\
+GROUP BY\
+ w.Hours;\
+\
+13. Valitse vanhin esimies \
+\
+SELECT\
+ e.fname,\
+ s.lname\
+FROM\
+ employee e,\
+ employee s\
+WHERE\
+  e.supervisor = s.ssn\
+ORDER BY\
+ e.Bdate\
+LIMIT\
+ 1;\
+\
+\
+14. Valitse kaikki riippuvuussuhteessa olevat (dependents) ja ne, joilla on sisar (Vinkki: k\'e4yt\'e4 OUTER JOIN:ia)\
+\
+\
+//Kaikki joilla on 'dependent'\
+\
+SELECT\
+ e.FName,\
+ e.LName,\
+ d.DName,\
+ d.Relationship\
+FROM\
+ employee e,\
+ dependent d\
+FULL OUTER JOIN\
+ d ON  e.Ssn = d.Employee\
+ORDER BY\
+ e.LName;\
+\
+---\
+\
+//Vain ne joilla on sisarukset 'dependent:ina'\
+\
+SELECT\
+ employee.FName,\
+ employee.LName,\
+ dependent.Relationship,\
+ dependent.DName\
+FROM\
+ dependent\
+INNER JOIN\
+ employee ON dependent.Employee = employee.Ssn\
+WHERE\
+ dependent.Relationship = "Sister" or dependent.Relationship = "Brother"\
+ORDER BY\
+ dependent.Relationship;}
