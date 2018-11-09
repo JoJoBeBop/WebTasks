@@ -142,9 +142,9 @@ GROUP BY\
 \
 12. Laske kaksosten tekem\'e4t ty\'f6tunnit projekteittain\
 \
-// Tietokannassa ei ole kaksosia, joten etsin vaan ihmisetn keill\'e4 on nimi Simpson ja tulostan, miss\'e4 n\'e4kyy tunnit projekteittain ja summaan tunnit.\
+// Tietokannassa ei ole kaksosia, joten etsin vaan ihmiset keill\'e4 on nimi Simpson (jos olisi kaksi Simpsonia) ja sama tietty syntym\'e4p\'e4iv\'e4. Tulostuksessa n\'e4kyy tunnit projekteittain ja tunnit summattuna.\
 \
-SELECT DISTINCT\
+SELECT \
  w.hours,\
  e.LName,\
  p.PName,\
@@ -154,9 +154,10 @@ FROM\
  works_on w,\
  project p\
 WHERE\
- e.LName LIKE "Simpson" AND p.PNo = w.ProjNo AND w.Employee = e.Ssn\
+ e.LName LIKE "Simpson" AND e.Bdate = "1980-01-01" AND p.PNo = w.ProjNo AND w.Employee = e.Ssn\
 GROUP BY\
  w.Hours;\
+\
 \
 13. Valitse vanhin esimies \
 \

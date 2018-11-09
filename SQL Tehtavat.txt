@@ -258,7 +258,7 @@ WHERE
 
 ---
 //Antaa Simpsonin työtunnit projkteittain
-SELECT DISTINCT
+SELECT 
  w.hours,
  e.LName,
  p.PName,
@@ -268,7 +268,7 @@ FROM
  works_on w,
  project p
 WHERE
- e.LName LIKE "Simpson" AND p.PNo = w.ProjNo AND w.Employee = e.Ssn
+ e.LName LIKE "Simpson" AND e.Bdate = "1980-01-01" AND p.PNo = w.ProjNo AND w.Employee = e.Ssn
 GROUP BY
  w.Hours;
 
