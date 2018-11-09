@@ -152,12 +152,16 @@ WHERE
 
 //Toimii:
 SELECT
- projno,
+ pname,
 SUM(hours)
 FROM
- works_on
+ works_on w,
+ project p
+WHERE
+ p.pno = w.ProjNo
 GROUP BY
  projno;
+
 
 =====
 
@@ -186,10 +190,53 @@ WHERE
 
 
 10. Laske yksikköhinta: työtunnit / projekti osastoittain
+
+//osasto, projnimi, tunnit sum:
+SELECT
+ d.dname,
+ p.pname,
+SUM(hours)
+FROM
+ works_on w,
+ project p,
+ department d
+WHERE
+ p.pno = w.ProjNo AND p.DeptNo = d.DNo
+GROUP BY
+ projno;
+
     
 ===
 
 11. Valitse työntekijöt osastoittain ja esitä ne  ikäjärjestyksessä
+
+//Antaa ikäjärjestyksessä ja näyttää missä osastossa on
+SELECT
+ e.FName,
+ e.lname,
+ d.dname
+FROM
+ employee e,
+ department d
+WHERE
+ e.DeptNo = d.DNo
+GROUP BY
+ bdate DESC;
+
+---
+
+SELECT
+ e.FName,
+ e.lname,
+ d.dname
+FROM
+ employee e,
+ department d
+WHERE
+ e.DeptNo = d.DNo
+ORDER BY
+ d.dname AND bdate DESC;
+
 
 ===
 
@@ -199,8 +246,20 @@ WHERE
 
 13. Valitse vanhin esimies
 
+SELECT
+ e.fname,
+ s.lname
+FROM
+ employee e,
+ employee s
+WHERE
+  e.supervisor = s.ssn
+ORDER BY
+ e.Bdate
+LIMIT
+ 1;
+
+
 ===
 
 14. Valitse kaikki riippuvuussuhteessa olevat (dependents) ja ne, joilla on sisar (Vinkki: käytä OUTER JOIN:ia)
-
-===
