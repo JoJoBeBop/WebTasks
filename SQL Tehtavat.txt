@@ -244,7 +244,7 @@ ORDER BY
 
 ===
 
-13. Valitse vanhin esimies
+13. Valitse vanhin esimies 
 
 SELECT
  e.fname,
@@ -263,3 +263,35 @@ LIMIT
 ===
 
 14. Valitse kaikki riippuvuussuhteessa olevat (dependents) ja ne, joilla on sisar (Vinkki: käytä OUTER JOIN:ia)
+
+
+//Kaikki
+SELECT
+ e.FName,
+ e.LName,
+ d.DName,
+ d.Relationship
+FROM
+ employee e,
+ dependent d
+FULL OUTER JOIN
+ d ON  e.Ssn = d.Employee
+ORDER BY
+ e.LName;
+
+---
+
+//Vain sisarukset
+SELECT
+ employee.FName,
+ employee.LName,
+ dependent.Relationship,
+ dependent.DName
+FROM
+ dependent
+INNER JOIN
+ employee ON dependent.Employee = employee.Ssn
+WHERE
+ dependent.Relationship = "Sister" or dependent.Relationship = "Brother"
+ORDER BY
+ dependent.Relationship;
