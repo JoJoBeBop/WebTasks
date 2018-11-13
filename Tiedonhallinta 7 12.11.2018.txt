@@ -1,0 +1,186 @@
+Tiedonhallinta 7 12.11.2018
+
+Temporaalitiedonhallinta: tapahtuma-aika
+
+HUOM!
+
+create table tt_demo(
+ tst timestamp,
+ tet timestamp
+);
+
+insert into tt_demo
+values(
+ null,
+ null
+);
+
+
+1. Toteuta tapahtuma-aikasovellus taulusta:
+
+CREATE TABLE TT_Kontakti(
+ id int not null,
+ etunimi CHAR(15),
+ sukunimi CHAR(20),
+ puhelin CHAR(15),
+ osoite CHAR(100),
+ tst datetime not null,
+ tet datetime,
+ primary key(id, tst)
+ );
+
+2. Syötä tauluun tapahtuma-ajoilla varustetut rivit
+
+INSERT INTO TT_Kontakti
+VALUES(
+ 1,
+ 'Matti',
+ 'Tatti',
+ '927398u2',
+ 'Umpikuja 1',
+ '2018-11-02 12:00:05',
+ NULL
+);
+
+3. Päivitä tietueen id=1 tiedot:
+-- ensin syötetään uusi rivi korjatuilla tiedoilla:
+
+INSERT INTO TT_Kontakti
+VALUES(
+ 1,
+ 'Matti',
+ 'Tatti',
+ '927398u2',
+ 'Kiertotie 2',
+ '2018-11-12 13:00:05',
+ NULL
+);
+
+-- sitten päivitetään edellinen tapahtuma päättyneeksi:
+UPDATE TT_Kontakti
+ SET tet = '2018-11-12 13:00:05'
+  WHERE id = 1 AND tst = '2018-11-02 12:00:05';
+
+
+4. Mitkä faktat olivat voimassa 5.11.2018?
+
+SELECT
+ *
+FROM
+ TT_Kontakti
+WHERE
+ (tet >= '2018-11-05' OR tet is null) AND
+  tst <= '2018-11-05';
+
+===
+Bi-temporaalisessa rakenteessa on sekä voimassaolo- että tapahtuma-ajat tallennettuina.
+
+5. Tee Kontakti-taulusta bi-temporaalinen versio BT_Kontakti
+
+CREATE TABLE BT_Kontakti(
+ id int not null,
+ etunimi CHAR(15),
+ sukunimi CHAR(20),
+ puhelin CHAR(15),
+ osoite CHAR(100),
+ vst DATE not null,
+ vet DATE,
+ tst DATETIME not null,
+ tet DATETIME,
+ PRIMARY KEY(id, vst, tst)
+);
+
+6. Syötetään BT_Kontaktiin yksi tietue:
+
+INSERT INTO BT_Kontakti
+VALUES(
+ 1,
+ 'Matti',
+ 'Tatti',
+ '927398u2',
+ 'Umpikuja 1',
+ '2018-11-02',
+ NULL,
+ '2018-11-04 12:00:05',
+ NULL
+);
+
+-- Bi-temporaalirakenteessa päivittäminen:
+1. Syötetään rivi, jossa ovat uudet arvot sekä vst:lle että tst:lle; vet ja tet saavat arvoksensa NULL:in
+2. Syötetään rivi, jossa nykyisen tiedon voimassaolo päättyy (vet saa päättymisaikaa ilmaisevan arvon). tst saa saman arvon, kuin edellisen rivin tst ja tet arvon NULL
+3. Päivitetään alkuperäinen tieto, jossa tet saa saman arvon, kuin edellisen rivin tst
+
+
+INSERT INTO BT_Kontakti
+VALUES(
+  1,
+ 'Matti',
+ 'Tatti',
+ '927398u2',
+ 'Kiertotie 2',
+ '2018-11-12',
+ NULL,
+ '2018-11-12 14:00:00',
+ NULL
+);
+
+INSERT INTO BT_Kontakti
+VALUES(
+ 1,
+ 'Matti',
+ 'Tatti',
+ '927398u2',
+ 'Umpikuja 1',
+ '2018-11-02',
+ '2018-11-11',
+ '2018-11-12 14:00:00',
+ NULL
+);
+
+UPDATE BT_Kontakti
+ SET tet = '2018-11-12 14:00:00'
+  WHERE
+   id = 1 AND
+   vst = '2018-11-02' AND
+   tst = '2018-11-04 12:00:05';
+
+
+T1 TOTEUTA TEMPORAALISUUS 
+
+CREATE TABLE VT_works_on(
+    ProjNo INTEGER,
+    employee VARCHAR(11),
+    vst datetime,
+    vetdatetime
+)engine=myisam;
+
+INSERT INTOVT_works_on
+VALUES(
+ 100, 
+ 8548469-547,
+ "2018-11-15 11:00:05",
+ "2018-11-15 15:00:05"
+);
+
+T2. Tee kysely, jolla lasket työntekijän tekemät tunnit projekteittain
+
+SELECT
+ e.lname Tyontekija,
+ p.pname Projekti,
+ timestampdiff(hours,w.vst, w.vet) Tunnit
+FROM
+ employee e INNER JOIN
+  VT_works_on as w ON e.ssn = w.employee
+ INNER JOIN 
+  project p ON p.pno = w.projno;
+
+//jotin muuta
+
+SELECT
+ *
+FROM
+ employee e INNER JOIN
+  VT_works_on as w ON e.ssn = w.employee
+ INNER JOIN 
+  project p ON p.pno = w.projno;
+ 
