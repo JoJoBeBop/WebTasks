@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Damn straight</title>
+</head>
+<body>
+
+<h1>A Simple Webpage</h1>
+
+<ul class="fruits">
+    <li>Apple</li>
+    <li>Banana</li>
+    <li data-foodtype="squishy">Orange</li>
+    <li>Pear</li>
+    <li>Kiwi</li>
+    <li id="berry">Strawberry</li>
+</ul>
+
+
+<script>
+
+  //TEHT 1
+
+  const marja2 = document.getElementById('berry');
+  console.log(marja2);
+  console.log('I found the berry: ' + marja2);
+  //Style muutos
+  document.getElementById('berry').style.backgroundColor = 'red';
+
+
+  //TEHT 2
+
+  const app = document.querySelector('[data-foodtype="squishy"]');
+  console.log(app);
+  console.log('I found the fruit : ' + app.innerText);
+  //Style muutos
+  const y = document.getElementsByTagName('li');
+  y[2].style.backgroundColor = 'orange';
+
+  //TEHT 3.1
+
+  const lista = document.getElementsByTagName('li');
+  console.log(lista);
+
+
+  //TEHT 3.2
+
+  const ul = document.querySelector('ul');
+  const sisalto = ul.getElementsByTagName('li');
+
+  for (let i = 0; i < sisalto.length; i++) {
+    console.log(sisalto[i].textContent);
+    //Style muutokset
+    sisalto[3].style.backgroundColor = 'green';
+    sisalto[i].style.width = '100px';
+    sisalto[i].style.listStyleType = 'none';
+
+  }
+
+  //TEHT 4.1
+
+  const toinenLista = document.querySelectorAll('li');
+  console.log(toinenLista);
+
+  //TEHT 4.2
+  //Vaikeamman kautta, viedään li elementit listaan ja tulostetaan se forEachia käyttäen
+
+  const listSisalto = document.querySelector("ul").getElementsByTagName("li");
+  let arrayLista = [];
+
+  for (let j=0; j < listSisalto.length; j++) {
+    let arraySisalto = listSisalto[j].innerHTML;
+    arrayLista.push(arraySisalto);
+    //Laatikko listan päälle
+    sisalto[j].style.border = '1px solid black';
+
+  }
+  //Printtaus
+  arrayLista.forEach(function(element){
+    console.log(element);
+  });
+
+
+
+
+</script>
+
+</body>
+</html>
