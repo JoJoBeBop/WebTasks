@@ -2,26 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AJAX</title>
-
+    <title>Damn straight</title>
 </head>
 <body>
 
-<img>
+<input id="hakuteksti" type="text">
+<button id="hakunappi">Hae</button>
+<p id="tulostus"></p>
 
-<script>
-  console.log('skripti alkaa');
-  const xhr = new XMLHttpRequest();                       // XMLHttpRequest-olio, joka hoitaa kommunikaation clientin ja serverin välillä
-  xhr.open('get', 'dataUrlExample.txt', false);           // Kerrotaan XMLHttpRequest-oliolle metodi ja osoite, johon pyyntö lähetetään sekä vaihdetaan toiminta synkroniseksi (false)
-  xhr.send(null);                                         // Lähetetään pyyntö
-
-  if (xhr.status === 200) {                               // Jos osoite löytyi, eli pyyntö on onnistunut,
-    document.querySelector('img').src = xhr.responseText; // asetetaan <img>-elementin src attribuutin arvoksi ladattu sisältö, joka tässä tapauksessa on dataURL-muotoinen kuva
-    console.log('synkroninen lataus valmis');
-  }
-
-  console.log('skripti päättyy');
-</script>
+<p id="demo"></p>
 
 </body>
+
+<script>
+
+  const nappi = document.getElementById('hakunappi');
+  const haku = document.getElementById("hakuteksti");
+
+  function A(evt){
+    console.log(haku.value);
+    fetch("http://api.tvmaze.com/search/shows?q=" + haku.value)
+
+
+    .then(function(response) {
+      return response.json();
+
+    })
+    .then(function(json) {
+      nayta(json);
+      console.log(json);
+    })
+  }
+  nappi.addEventListener('click', A);
+
+  function nayta(tulot) {
+    const name = tulot.name;
+
+    for (let i = 0; i <=10; i++) {
+      document.querySelector('p').innerText += name;
+    }
+
+
+
+
+
+  }
+</script>
 </html>
