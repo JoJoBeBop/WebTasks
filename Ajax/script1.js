@@ -1,53 +1,73 @@
 const nappi = document.getElementById('hakunappi');
-const haku = document.getElementById("hakuteksti");
+const haku = document.getElementById('hakuteksti');
 
-function A(evt){
-  console.log(haku.value);
-  fetch("http://api.tvmaze.com/search/shows?q=" + haku.value)
+function A(evt) {
 
+  fetch('http://api.tvmaze.com/search/shows?q=' + haku.value).
+      then(function(response) {
+        return response.json();
+      }).
+      then(function(json) {
+        nayta(json);
+        console.log(json);
+        console.log(haku.value);
 
-      .then(function(response) {
-        return response.text();
-
-
-      })
-      .then(function(html) {
-        let toHTML = new DOMParser();
-        let parse = toHTML.parseFromString(html, "text/html");
-
-
-        console.log(parse);
-      })
-      .catch(function(errorLog) {
-        console.log("ERROR : ", errorLog);
       });
 }
+
+//Klikkaukset
 nappi.addEventListener('click', A);
 
+//Press enter to search
+const input = document.getElementById('hakuteksti');
+input.addEventListener('keyup', function(event) {
+  event.preventDefault();
+  if (event.keyCode === 13) {
+    document.getElementById('hakunappi').click();
+  }
+});
+
+function nayta(tulot) {
+
+  //Tyhjentää
+  const ulla = document.getElementById('uli');
+  ulla.innerHTML = '';
+
+  for (let i = 0; i <= 9; i++) {
 
 
+    //Etsii
+    const nimi = tulot[i].show.name;
+    const linkki = tulot[i].show.url;
+    const yhteenveto = tulot[i].show.summary;
+    const genre = tulot[i].show.genres;
+    const kuva = tulot[i].show.image.medium;
 
+    //Printtaa
+    const div5 = document.querySelector('ul');
+    const html5 = '<img src="' + kuva + '">';
+    div5.innerHTML += html5;
 
+    const div = document.querySelector('ul');
+    const html = '<li>' + nimi + '</li>';
+    div.innerHTML += html;
 
-/*
-const ul = document.getElementById('demo'); // Get the list where we will place our authors
-const url = "http://api.tvmaze.com/search/shows?q=" + haku.value;*/
-/*
+    const div3 = document.querySelector('ul');
+    const html3 = '<li>' + yhteenveto + '</li>';
+    div3.innerHTML += html3;
 
-Toimii:
+    const div2 = document.querySelector('ul');
+    const html2 = '<li><a href= "' + linkki + '">Link to website</a></li>';
+    div2.innerHTML += html2;
 
-    function A(evt){
-      console.log(haku.value);
-      fetch("http://api.tvmaze.com/search/shows?q=" + haku.value)
+    const div4 = document.querySelector('ul');
+    const html4 = '<li>' + genre[0] + ', ' + genre[1] + ', ' + genre[2] +
+        '</li> -------------------------- <br>';
+    div4.innerHTML += html4;
 
+  }
+  console.log('fff');
 
-      .then(function(response) {
-        return response.json();
+}
 
-      })
-      .then(function(data) {
-        console.log(data)
-      })
-    }
-nappi.addEventListener('click', A);
-*/
+console.log('DDDD');

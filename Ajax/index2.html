@@ -17,34 +17,29 @@
 <script>
 
   const nappi = document.getElementById('hakunappi');
-  const haku = document.getElementById("hakuteksti");
+  const haku = document.getElementById('hakuteksti');
 
-  function A(evt){
-    console.log(haku.value);
-    fetch("http://api.tvmaze.com/search/shows?q=" + haku.value)
+  function A(evt) {
 
-
-    .then(function(response) {
+    fetch('http://api.tvmaze.com/search/shows?q=' + haku.value).then(function(response) {
       return response.json();
 
-    })
-    .then(function(json) {
+    }).then(function(json) {
       nayta(json);
       console.log(json);
-    })
+      console.log(haku.value);
+
+    });
   }
+
   nappi.addEventListener('click', A);
 
   function nayta(tulot) {
-    const name = tulot.name;
+    const name = tulot[0].name;
 
-    for (let i = 0; i <=10; i++) {
+    for (let i = 0; i <= 10; i++) {
       document.querySelector('p').innerText += name;
     }
-
-
-
-
 
   }
 </script>
