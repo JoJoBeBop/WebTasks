@@ -1,4 +1,21 @@
-body {
+/*body {
     background-image: url("board-cinema-cinematography-274937.jpg");
     background-size: cover;
+}*/
+
+.container {
+    max-width: 65%;
+    margin: 0 auto;
+
+}
+
+.searchDiv {
+    display: flex;
+    justify-content: center;
+
+}
+
+img {
+    float: left;
+    padding-right: 50px;
 }
