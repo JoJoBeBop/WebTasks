@@ -1,21 +1,89 @@
-/*body {
+body {
     background-image: url("board-cinema-cinematography-274937.jpg");
     background-size: cover;
-}*/
+
+    font-family: Verdana, Geneva, sans-serif;
+}
+
 
 .container {
     max-width: 65%;
     margin: 0 auto;
+}
 
+::-webkit-scrollbar {
+    display: none;
 }
 
 .searchDiv {
     display: flex;
     justify-content: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
 
+    min-width: 100%;
+    background: rgba(0, 0, 0, .2);
+    border-radius: 3px;
+    border: 1px solid #fff;
 }
+
+#hakuteksti {
+    min-width: 200px;
+    width: 100%;
+    max-width: 370px;
+    padding: 10px 5px;
+    border: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+#hakunappi {
+    border: 0;
+    padding: 0;
+    height: 40px;
+    min-width: 50px;
+    max-width: 120px;
+    border-left: 1px solid #fff;
+    border-radius: 0 3px 3px 0;
+}
+
+#tulostus {
+    overflow: hidden visible;
+    height: 1175px;
+    margin: 0;
+    min-width: 100%;
+}
+
+.rivi {
+    min-height: 300px;
+    padding: 10px;
+    border-bottom: black;
+    background-color: #D3D3D3;
+    /*display: inline-block;*/
+    margin: 2px;
+    border-radius: 15px;
+
+    opacity: 0.9;
+    min-width: 98%;
+}
+/*
+.teksti {
+    position: ;
+    right: 0;
+    width: 100px;
+    height: 120px;
+    border: 3px solid blue;
+}*/
+
 
 img {
     float: left;
+    justify-content: center;
     padding-right: 50px;
 }
+
+
+h4 {
+    font-size: 130%;
+    margin: 0;
+}
+

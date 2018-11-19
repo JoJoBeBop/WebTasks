@@ -10,6 +10,8 @@ function A(evt) {
       then(function(json) {
         nayta(json);
         console.log(json);
+        console.log(json.length);
+
         console.log(haku.value);
 
       });
@@ -18,7 +20,7 @@ function A(evt) {
 //Klikkaukset
 nappi.addEventListener('click', A);
 
-//Press enter to search
+//Enter toiminnaliseksi
 const input = document.getElementById('hakuteksti');
 input.addEventListener('keyup', function(event) {
   event.preventDefault();
@@ -30,67 +32,54 @@ input.addEventListener('keyup', function(event) {
 function nayta(tulot) {
 
   //Tyhjentää
-  const ulla = document.getElementById('uli');
+  const ulla = document.getElementById('tulostus');
   ulla.innerHTML = '';
 
   for (let i = 0; i <= 9; i++) {
 
-
-    //Etsii
+    //Etsii tiedot
     const nimi = tulot[i].show.name;
     const linkki = tulot[i].show.url;
     const yhteenveto = tulot[i].show.summary;
     const genre = tulot[i].show.genres;
 
-
-
-
-
-
-    //Printtaa
-
+    //Printtaa rivit, jonka sisälle sisältö tulee
     const divide = document.querySelector('.tulostusDiv');
-    const divi = '<div>';
+    const divi = '<div class="rivi"></div>';
     divide.innerHTML += divi;
 
-    //Katsoo jos kuva on Null
+    //Katsoo jos kuva on Null ja printtaa
     if (tulot[i].show.image != null ){
       let kuva = tulot[i].show.image.medium;
-      const div5 = document.querySelector('ul');
+      const div5 = divide.getElementsByTagName('div')[i];
       const html5 = '<img src="' + kuva + '">';
       div5.innerHTML += html5;
 
     } else {
       const kuva = "https://cdn.releases.com/img/image/6571e6ee-a45a-4b44-b736-9cefa0493180.jpg/300"
-      const div5 = document.querySelector('ul');
+      const div5 = divide.getElementsByTagName('div')[i];
       const html5 = '<img src="' + kuva + '">';
       div5.innerHTML += html5;
     }
 
-    const div = document.querySelector('ul');
-    const html = '<li>' + nimi + '</li>';
+    //Muu sisältö
+    const div = divide.getElementsByTagName('div')[i];
+    const html = '<h4 class="teksti">' + nimi + '</h4>';
     div.innerHTML += html;
 
-    const div3 = document.querySelector('ul');
-    const html3 = '<li>' + yhteenveto + '</li>';
+    const div3 = divide.getElementsByTagName('div')[i];
+    const html3 = yhteenveto;
     div3.innerHTML += html3;
 
-    const div2 = document.querySelector('ul');
-    const html2 = '<li><a href= "' + linkki + '">Link to website</a></li>';
+    const div2 = divide.getElementsByTagName('div')[i];
+    const html2 = '<a href= "' + linkki + '"  class="teksti">Link to website</a>';
     div2.innerHTML += html2;
 
-    const div4 = document.querySelector('ul');
-    const html4 = '<li>' + genre[0] + ', ' + genre[1] + ', ' + genre[2] +
-        '</li> -------------------------- <br>';
+    const div4 = divide.getElementsByTagName('div')[i];
+    const html4 = '<p class="teksti">' + genre + '</p>';
     div4.innerHTML += html4;
 
-    const divide1 = document.querySelector('.tulostusDiv');
-    const divi1 = '</div>';
-    divide1.innerHTML += divi1;
 
   }
-  console.log('fff');
 
 }
-
-console.log('DDDD');
