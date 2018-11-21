@@ -1,0 +1,42 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 1.\
+summary(mtcars)\
+\
+\
+\
+2.\
+ hist(mtcars$mpg)\
+\
+\
+3.\
+ max(mtcars$hp)\
+[1] 335\
+\
+\
+which.max(mtcars$hp)\
+[1] 31\
+\
+#Toimiva\
+rownames(mtcars[which.max(mtcars$hp),])\
+[1] "Maserati Bora"\
+\
+4.\
+#Antaa nimet joilla on 4 syl.\
+> rownames(mtcars[which(mtcars$cyl==4),])\
+\
+5.\
+pie(table(mtcars$cyl), main="Sylinder distribution among cars")\
+\
+\
+\
+6.\
+plot(mpg~hp, data=mtcars)\
+Mit\'e4 pienempi hevosvoima, sit\'e4 pienempi polttoaineen kulutus\
+\
+}
