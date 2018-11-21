@@ -27,8 +27,7 @@ rownames(mtcars[which.max(mtcars$hp),])\
 [1] "Maserati Bora"\
 \
 4.\
-#Antaa nimet joilla on 4 syl.\
-> rownames(mtcars[which(mtcars$cyl==4),])\
+mtcars[which(mtcars$cyl==4),]\
 \
 5.\
 pie(table(mtcars$cyl), main="Sylinder distribution among cars")\
@@ -39,4 +38,6 @@ pie(table(mtcars$cyl), main="Sylinder distribution among cars")\
 plot(mpg~hp, data=mtcars)\
 Mit\'e4 pienempi hevosvoima, sit\'e4 pienempi polttoaineen kulutus\
 \
+7.\
+> boxplot(hp,data=mtcars, main="Distribution of horsepower") \
 }
