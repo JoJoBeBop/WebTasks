@@ -1,0 +1,13 @@
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+}
+
+li {
+    width: calc(100% / 3);
+}
+
+video, audio, img {
+    width: 100%;
+}
