@@ -30,7 +30,7 @@ const select = (connection, callback) => {
 const insert = (data, connection, callback) => {
   // simple query
   connection.execute(
-      'INSERT INTO wp_users (ufname, ulname, ufile, uthumb) VALUES (?, ?, ?, ?);',
+      'INSERT INTO wp_users (ufname, ulname, ufile, uthumb, mimetype, coordinates) VALUES (?, ?, ?, ?, ?, ?);',
       data,
       (err, results, fields) => {
         console.log(results); // results contains rows returned by server

@@ -2,12 +2,12 @@
 const sharp = require('sharp');
 
 const resizeImage = (kuva, koko, uusiKuva) => {
-  sharp(kuva)
+  return sharp(kuva)
       .resize(koko)
       .toFile(uusiKuva)
       .then((data) => {
         console.log(data);
-        return true;
+        return data;
       }).catch((err) => {
         console.log(err);
   });
